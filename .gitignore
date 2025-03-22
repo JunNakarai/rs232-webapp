@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+*.log
+react-serial-ui/node_modules/
+react-serial-ui/dist/

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body>
+    <h1>RS232C</h1>
+    <textarea id="log" rows="10" cols="50" readonly></textarea><br>
+    <input type="text" id="input" placeholder="送信メッセージ">
+    <button onclick="send()">送信</button>
+
+<script>
+    const ws = new WebSocket("ws://localhost:3000");
+    const log = document.getElementById('log');
+
+    ws.onmessage = (event) => {
+        log.value += event.data + '\n';
+    };
+    function send(){
+        const input = document.getElementById('input');
+        ws.send(input.value);
+        log.value += input.value + '\n';
+        input.value = "";
+    }
+</script>
+</body>
+</html>
