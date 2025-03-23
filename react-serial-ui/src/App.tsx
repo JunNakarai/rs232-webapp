@@ -44,7 +44,13 @@ return (
       onChange={(e) => setInput(e.target.value)}
       placeholder="Enter message"
       style={{ width: '70%' }}
-    />
+      onKeyDown={(e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          sendMessage();
+        }
+      }}
+    /> 
     <button onClick={sendMessage} style={{ marginLeft: '1rem' }}>
       Send
     </button>
